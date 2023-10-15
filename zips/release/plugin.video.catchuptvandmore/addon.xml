@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.catchuptvandmore" name="Catch-up TV &amp; More" version="0.2.39~beta07" provider-name="SylvainCecchetto,wwark,joaopa">
+  <requires>
+    <!-- xbmc.python -->
+    <import addon="script.module.codequick" version="0.9.13"/>
+    <import addon="script.module.youtube.dl" version="18.225.0"/>
+    <import addon="script.module.requests" version="2.12.4"/>
+    <import addon="script.module.pytz" version="2014.2"/>
+    <import addon="script.module.inputstreamhelper" version="0.3.3"/>
+    <import addon="script.module.six" version="1.11.0"/>
+    <import addon="script.module.pyqrcode" version="0.0.1"/>
+    <import addon="script.module.tzlocal" version="2.0.0"/>
+    <import addon="script.module.future" version="0.17.1"/>
+    <import addon="script.module.kodi-six" version="0.0.4"/>
+    <import addon="resource.images.catchuptvandmore" version="1.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.service" library="service.py"/>
+  <extension point="xbmc.addon.metadata">
+    <!-- Set reuselanguageinvoker to false while developing the addon, making it only true for the production version -->
+    <!-- See https://kodi.wiki/view/Addon.xml#.3Creuselanguageinvoker.3E -->
+    <reuselanguageinvoker>true</reuselanguageinvoker>
+    <summary lang="fr_FR">Catch-Up TV &amp; More : Télévision de rattrapage, télévision en direct et bien plus encore.</summary>
+    <description lang="fr_FR">Catch-Up TV &amp; More regroupe dans une même extension de Kodi l'ensemble des vidéos des différents services et chaînes de rattrapage TV ainsi que l'accès au direct. De plus, cette extension vous permet d'accéder rapidement aux vidéos et contenus proposés par certains sites internet.</description>
+    <disclaimer lang="fr_FR">Retours de bugs, propositions d'améliorations ou d'ajout de contenus sont les bienvenue ! GitHub ou e-mail.</disclaimer>
+    <summary lang="en_GB">Catch-Up TV &amp; More: It's all in the title.</summary>
+    <description lang="en_GB">Catch-Up TV &amp; More brings together in one Kodi add-on all the videos of the various services and channels of catch-up TV and live TV. Furthermore, this add-on allows you to quickly access the videos and content offered by certain websites.</description>
+    <disclaimer lang="en_GB">Bug reports, suggestions for improvements or content additions are welcome! GitHub or e-mail.</disclaimer>
+    <description lang="he_IL">ההרחבה מאפשרת לך להתעדכן בתוכן השידורים תוסף אחד של קודי מרכז את כל קטעי וידאו של שירותים שונים וערוצי תוכן משודר. בנוסף, תוספת זו מאפשרת לך לגשת במהירות לסרטונים ולתכנים המוצעים על ידי אתרים מסוימים.</description>
+    <disclaimer lang="he_IL">דוחות שגיאה, הצעות לשיפור או תוספות תוכן יתקבלו בברכה! ל-GitHub או אימייל.</disclaimer>
+    <summary lang="nl_NL">Catch-Up TV &amp; More: Replay tv, Live tv en meer.</summary>
+    <description lang="nl_NL">Catch-Up TV &amp; More brengt replay en live tv van verschikkende diensten en kanalen samen in één Kodi add-on. Bovendien stelt deze add-on u instaat video's van bepaalde websites makkelijk te benaderen.</description>
+    <disclaimer lang="nl_NL">Bug meldingen, suggesties ter verbetering of additionele inhouden zijn welkom! Via GitHub of e-mail.</disclaimer>
+
+    <language></language>
+    <platform>all</platform>
+    <license>GPL-2.0</license>
+    <forum>https://forum.kodi.tv/showthread.php?tid=307107</forum>
+    <website>https://catch-up-tv-and-more.github.io/</website>
+    <email>catch.up.tv.and.more at gmail dot com</email>
+    <source>https://github.com/Catch-up-TV-and-More/plugin.video.catchuptvandmore</source>
+    <news>
+[Version 0.2.39]
+[FR - L'équipe] Fix bug and add a message (PR #933) thanks @Arias800
+[UK - UKTVPLAY] Fix live
+[BE - RTBF] Fix live and issue with drm on rpi (PR #937 issue #935) thanks @gael81
+[BE - RTBF] Fix flake8 (PR #938) thanks @darodi
+[GR - EPT] Add live channels (issue #926)
+Project: Add some translations
+[TR - CINNERGROUP] Fixed cinnergroup channels (PR #939) thanks @itasli
+[TR - DOGUS GROUP] Fixed dogus group channels (PR #941) thanks @itasli
+Project: Remove an useless file
+[WO - EPTNEWS] Fix skeleton
+[TR - CINE5] Fix channel (PR #944) thanks @itasli
+[BE - RTBF] [BE - RTBF] Adapt live for new stream provider (redbee) - fix replays in categories (PR #946) thanks @darodi
+[BE - RTLPLAYBE] Make compliant with Kodi18
+[BE - RTLPLAYBE] make search work again in kodi >=19 (PR #948) thanks @darodi
+[BE - RTLPLAYBE] yield playlist (PR #949) thanks @darodi
+[FR - TV7Bordeaux] Fix live
+[FR - M6] yield playlist (PR #951) thanks @darodi
+[FR - TV7Bordeaux] Fix flake (PR #951) thanks @darodi
+[FR - Mycanal] Fix index error (PR #947 issue #950)
+[FR - CNEWS] Sort the replay in a more coherent way (PR #952 issue #943) thanks @darodi
+[CA - TVA] Fix replay (PR #953 issue #945) thanks @darodi
+[CA - TVA] Fix replay - api change (PR #955) thanks @darodi
+[CA - TVA] Fix live (PR #956) thanks @darodi
+[CA - TVA] Simplify the requests
+[CA - telequebec] Add section "En vedette" in replay (films, ...) (PR #958) thanks @darodi
+[CA - TVA] Enable multiple resolutions
+[JP - TVER] Use the Brightcove helper for replay
+[BE - LN24] Fix some replays (PR #960) thanks @darodi
+[FR - Franceinfo) Fix aired date (PR #961) thanks @Arias800
+[FR - Franceinfo] Fix flake8 (PR #961) thanks @Arias800
+[FR - Mycanal] New stream selection menu (PR #962) thanks @Arias800
+[UK - CHANNEL4] Add replay
+[FR - Mycanal] Add a dialog box to choose the stream (PR #962) @Arias800
+[UK - CHANNEL4] Add lives (issue #767)
+[FR] Use get_stream_with_quality in a few more places
+[Project]: If possible, avoid MP4 container in Brightcove helper (issue #965)
+[UK - CHANNEL4] Fix import of crypto module (issue #963) thanks @berkhornet
+[PE - ATV] Add lives
+[PE - ENLACE] Add live
+----
+Visit WebSite - http://mpdb.tv/#home which host the french forum used by users of CU TV and More
+    </news>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+      <screenshot>resources/screenshots/screenshot-01.jpg</screenshot>
+      <screenshot>resources/screenshots/screenshot-02.jpg</screenshot>
+      <screenshot>resources/screenshots/screenshot-03.jpg</screenshot>
+      <screenshot>resources/screenshots/screenshot-04.jpg</screenshot>
+      <screenshot>resources/screenshots/screenshot-05.jpg</screenshot>
+    </assets>
+  </extension>
+</addon>
